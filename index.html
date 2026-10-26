@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balance Between</title>
+<meta name="description" content="Signe writes about the spaces in between: AI and maternal health, research and life, data and care.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='16' height='32' fill='%236D2E46'/><rect x='16' width='16' height='32' fill='%23FFE3E6'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #6D2E46;
+    --blush: #FFE3E6;
+    --paper: #FFFAFA;
+    --ink: #2A1620;
+    --muted: #7A5A66;
+    --line: #F0D3D8;
+    --sans: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Spectral", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #1E1116; --ink: #FFE3E6; --muted: #C9A5B1; --line: #3A2029; }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: 1.125rem; line-height: 1.7;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  a { color: inherit; text-decoration-color: var(--plum); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+  @media (prefers-color-scheme: dark) { a { text-decoration-color: var(--blush); } }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+  @media (prefers-color-scheme: dark) { :focus-visible { outline-color: var(--blush); } }
+
+  .bar {
+    display: flex; justify-content: flex-end; gap: 1.75rem;
+    padding: calc(1rem + env(safe-area-inset-top, 0px)) clamp(1.25rem, 4vw, 3rem) 1rem;
+    font-family: var(--sans); font-size: 1rem;
+  }
+  .bar a { text-decoration: none; color: var(--muted); }
+  .bar a:hover { color: var(--ink); }
+
+  /* Hero: one name across two fields */
+  .hero {
+    display: grid;
+    min-height: min(78vh, 720px);
+    background: linear-gradient(to right, var(--plum) 50%, var(--blush) 50%);
+    font-family: var(--sans);
+  }
+  .hero .layer {
+    grid-area: 1 / 1;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0; font-weight: 500;
+    font-size: clamp(3rem, 10.5vw, 9.5rem);
+    letter-spacing: -0.035em; line-height: 0.95; white-space: nowrap;
+  }
+  .hero .on-plum  { color: var(--blush); clip-path: inset(0 50% 0 0); }
+  .hero .on-blush { color: var(--plum);  clip-path: inset(0 0 0 50%); }
+  .hero .word { display: inline; }
+  @media (max-width: 640px) {
+    .hero { background: linear-gradient(to bottom, var(--plum) 50%, var(--blush) 50%); min-height: 70vh; }
+    .hero .layer { flex-direction: column; font-size: clamp(3.2rem, 19vw, 6rem); line-height: 1.05; }
+    .hero .word { display: block; }
+    .hero .on-plum  { clip-path: inset(0 0 50% 0); }
+    .hero .on-blush { clip-path: inset(50% 0 0 0); }
+  }
+
+  main { padding: 0 clamp(1.25rem, 4vw, 3rem); }
+  #about {
+    display: grid;
+    grid-template-columns: minmax(8rem, 14rem) minmax(0, 40rem);
+    gap: 1rem clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(3rem, 8vw, 6rem) 0;
+  }
+  #about h2 { margin: 0.35rem 0 0; font-family: var(--sans); font-weight: 600; font-size: 1.05rem; }
+  #about p { margin: 0 0 1.1rem; }
+  #about .lead { font-size: clamp(1.35rem, 2.4vw, 1.7rem); line-height: 1.45; margin-bottom: 1.6rem; }
+  @media (max-width: 760px) { #about { grid-template-columns: 1fr; } }
+
+  .read {
+    display: inline-block; margin-top: 0.75rem; padding: 0.8rem 1.4rem;
+    background: var(--plum); color: var(--blush);
+    font-family: var(--sans); font-weight: 500; text-decoration: none; border-radius: 2px;
+  }
+  .read:hover { background: var(--ink); }
+  @media (prefers-color-scheme: dark) {
+    .read { background: var(--blush); color: var(--plum); }
+    .read:hover { background: #fff; }
+  }
+
+  footer {
+    padding: 2.5rem clamp(1.25rem, 4vw, 3rem) 3rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--sans); font-size: 0.9rem; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <nav aria-label="Main" style="display:contents">
+    <a href="#about">About</a>
+    <!-- Points to your Substack -->
+    <a href="https://substack.com/@balancebetween">Writing</a>
+  </nav>
+</header>
+
+<div class="hero" role="banner">
+  <h1 class="layer on-plum"><span class="word">Balance&nbsp;</span><span class="word">Between</span></h1>
+  <div class="layer on-blush" aria-hidden="true"><span class="word">Balance&nbsp;</span><span class="word">Between</span></div>
+</div>
+
+<main>
+  <section id="about">
+    <h2>About</h2>
+    <div>
+      <p class="lead">I'm Signe. I study how AI and digital tools can support women through pregnancy and early motherhood, and when they shouldn't.</p>
+      <p>I'm a researcher with a background in biophysics from the Niels Bohr Institute, experience from digital health at Liva Healthcare, and I'm now a PhD fellow at Høgskulen på Vestlandet in Bergen, part of the EU-funded Bump2Baby&amp;Me+ project. My work combines machine learning with qualitative, woman-centred research, with a particular eye on ethics and transparency.</p>
+      <p>Balance Between is where I write about what sits in between: data and care, technology and the people it's built for, research and the rest of life. Expect notes from the PhD, thoughts on responsible FemTech, and the occasional detour into yoga, travel and whatever else keeps me steady.</p>
+      <a class="read" href="https://substack.com/@balancebetween">Read the writing</a>
+      <p style="margin-top:1.6rem">You can also find me on Instagram at <a href="https://instagram.com/balancebetween_">@balancebetween_</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Signe. Balance Between.</footer>
+
+</body>
+</html>
